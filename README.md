@@ -1,0 +1,1 @@
+Just execute `make run` in order to run migrations, build frontend and start a server.
