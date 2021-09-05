@@ -1,9 +1,10 @@
+PYTHON= python
 
 migrate_db:
-	python3 manage.py migrate
+	$(PYTHON) manage.py migrate
 
 run_backend:  migrate_db
-	python3 manage.py runserver
+	$(PYTHON) manage.py runserver
 
 install_frontend_deps:
 	cd frontend && yarn
@@ -11,5 +12,4 @@ install_frontend_deps:
 prepare_frontend: install_frontend_deps
 
 run_frontend: prepare_frontend
-	# run frontend dev server in background
-	cd frontend && BROWSER=none yarn start
+	cd frontend && yarn start
