@@ -60,7 +60,7 @@ MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',
 ]
 
-ROOT_URLCONF = 'TG_to_web.urls'
+ROOT_URLCONF = 'Tg_To_Web.urls'
 
 TEMPLATES = [
     {
