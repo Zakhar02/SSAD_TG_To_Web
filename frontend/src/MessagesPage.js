@@ -1,3 +1,5 @@
+import React, { useState } from 'react';
+
 import Navbar from 'react-bootstrap/Navbar';
 import Form from 'react-bootstrap/Form';
 import FormControl from 'react-bootstrap/FormControl';
@@ -9,26 +11,53 @@ import Card from 'react-bootstrap/Card';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 
+import {
+  useParams,
+  useHistory,
+} from "react-router-dom";
 
 
-const TopNavbar = () => {
+
+const TopNavbar = ({ initialChannelId }) => {
+  const [channelId, updateChannelId] = useState(initialChannelId);
+
+  const history = useHistory();
+
+  const onSubmitOrClick = (e) => {
+    e.preventDefault();
+
+    const url = `/channels/${channelId}/messages`;
+    history.push(url, null);
+  }
+
+  const onTextChange = (e) => {
+    updateChannelId(e.target.value);
+  };
+
+  // highlight border, if value was changed
+  const buttonVariant = (initialChannelId === channelId) ? null : "primary";
+
   return <Navbar bg="light" variant="light" expand="lg" fixed="top">
     <Container>
       <Navbar.Brand href="#home">TG2WEB</Navbar.Brand>
       <Nav className="me-auto">
-        <Form className="d-flex">
+        <Form onSubmit={onSubmitOrClick} className="d-flex">
           <FormControl
             type="search"
             placeholder="Search"
             className="mr-2"
             aria-label="Search"
+            value={channelId}
+            onChange={onTextChange}
           />
-          <Button variant="primary">Open Channel</Button>
+          <Button onClick={onSubmitOrClick} variant={buttonVariant}>Open Channel</Button>
         </Form>
       </Nav>
     </Container>
   </Navbar>;
 };
+
+
 
 const MessageItem = ({ text }) => {
   return <Row>
@@ -39,6 +68,8 @@ const MessageItem = ({ text }) => {
     </Card>
   </Row>;
 };
+
+
 
 const MessagesList = () => {
   const messages = [
@@ -56,8 +87,10 @@ const MessagesList = () => {
 };
 
 const MessagesPage = () => {
+  const { channelId } = useParams();
+
   return <div>
-    <TopNavbar />
+    <TopNavbar initialChannelId={channelId} />
     <MessagesList />
   </div>;
 };
