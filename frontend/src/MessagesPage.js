@@ -50,7 +50,7 @@ const MessagesList = () => {
   ];
   return <Container>
       <Row><br /></Row>
-      {messages.map(({ text }) => <MessageItem text={text} />)}
+      {messages.map(({ text }, i) => <MessageItem key={i} text={text} />)}
       <Row><br /></Row>
     </Container>
 };
