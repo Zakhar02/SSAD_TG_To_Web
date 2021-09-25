@@ -33,6 +33,9 @@ Whole system consists of three parts:
 ## Crawler(worker) behavior<br />
 ![Crawler diagram](https://github.com/Zakhar02/SSAD_TG_To_Web/blob/master/mermaid-diagram-20210925232941.png)
 
+## Preview<br />
+![front](https://github.com/Zakhar02/SSAD_TG_To_Web/blob/master/photo_2021-09-25_23-43-32.jpg)
+
 # Software Architecture 
 
 * Django - MVC framework, backend, has powerful patterns such as models and views.
