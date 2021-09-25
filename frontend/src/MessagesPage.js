@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 import Navbar from 'react-bootstrap/Navbar';
 import Form from 'react-bootstrap/Form';
@@ -34,7 +34,7 @@ const TopNavbar = ({ initialChannelId }) => {
     updateChannelId(e.target.value);
   };
 
-  // highlight border, if value was changed
+  // highlight button, if value was changed
   const buttonVariant = (initialChannelId === channelId) ? null : "primary";
 
   return <Navbar bg="light" variant="light" expand="lg" fixed="top">
@@ -71,14 +71,11 @@ const MessageItem = ({ text }) => {
 
 
 
-const MessagesList = () => {
-  const messages = [
-    { text: "Тестовое сообщение из канала" },
-    { text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent efficitur urna ligula, id convallis mi varius at. Morbi sagittis aliquet sapien ut pellentesque. Duis mauris eros, tempus eget lectus quis, aliquet sollicitudin ipsum. Morbi sit amet urna accumsan, eleifend massa sit amet, dignissim odio. Sed quis risus auctor, pretium diam ut, tempus quam." },
-    { text: "Ещё одно сообщение" },
-    { text: "Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur" },
-    { text: "Nulla lacus dui, scelerisque a congue id, feugiat sed leo. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. In in libero ac nisl suscipit pellentesque eget sit amet lorem. Nunc at velit fermentum, vulputate tortor blandit, congue turpis. Pellentesque et ante euismod lacus rhoncus viverra. Phasellus finibus neque odio, vel tristique nibh suscipit sit amet. Phasellus vestibulum eget sapien sit amet porta" }
-  ];
+const MessagesList = ({ messages }) => {
+  if (messages === null) {
+    return <div>Loading...</div>;
+  }
+
   return <Container>
       <Row><br /></Row>
       {messages.map(({ text }, i) => <MessageItem key={i} text={text} />)}
@@ -89,9 +86,18 @@ const MessagesList = () => {
 const MessagesPage = () => {
   const { channelId } = useParams();
 
+  const [messages, updateMessages] = useState(null);
+
+  useEffect(() => {
+    const url = `/api/channels/${channelId}/messages`;
+    fetch(url)
+      .then(resp => resp.json())
+      .then(items => updateMessages(items));
+  }, [channelId]);
+
   return <div>
     <TopNavbar initialChannelId={channelId} />
-    <MessagesList />
+    <MessagesList messages={messages} />
   </div>;
 };
 
