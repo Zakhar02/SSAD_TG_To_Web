@@ -15,11 +15,10 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from sample import views
-from .views import get_channels
+from .views import get_channels, get_messages
 
 urlpatterns = [
-    path('', views.index, name='home'),
     path('admin/', admin.site.urls),
     path('api/channels', get_channels),
+    path('api/channels/<str:channelId>/messages', get_messages),
 ]
