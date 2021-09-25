@@ -27,8 +27,10 @@ Whole system consists of three parts:
 
  * *frontend*. Implemented using React.js.
  * *web server*. Implemented using Django framework (Python).
- * *sync worker (bot)*. Works in background, communicates with Telegram API. Implemented using Python.
-![Web app diagram](https://github.com/Zakhar02/SSAD_TG_To_Web/blob/master/mermaid-diagram-20210925232147.png)
+ * *sync worker (bot)*. Works in background, communicates with Telegram API. Implemented using Python.<br />
+## Web application behavior<br />
+![Web app diagram](https://github.com/Zakhar02/SSAD_TG_To_Web/blob/master/mermaid-diagram-20210925232147.png)<br />
+## Crawler(worker) behavior<br />
 ![Crawler diagram](https://github.com/Zakhar02/SSAD_TG_To_Web/blob/master/mermaid-diagram-20210925232941.png)
 
 # Software Architecture 
