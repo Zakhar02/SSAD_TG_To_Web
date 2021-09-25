@@ -13,8 +13,8 @@ import MessagesPage from './MessagesPage.js';
 function App() {
   return <Router>
     <Switch>
-      <Route path="/"><HomePage /></Route>
-      <Route path="/channels/:channelId/messages"><MessagesPage /></Route>
+      <Route exact path="/"><HomePage /></Route>
+      <Route exact path="/channels/:channelId/messages"><MessagesPage /></Route>
     </Switch>
   </Router>;
 }
