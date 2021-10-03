@@ -37,7 +37,6 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'subscriber.apps.SubscriberConfig',
     'corsheaders',
     'rest_framework',
     'backend'

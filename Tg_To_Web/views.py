@@ -2,7 +2,7 @@ from django.http import JsonResponse
 from rest_framework.decorators import renderer_classes, api_view
 from rest_framework.renderers import JSONRenderer
 
-from subscriber.models import Channel
+from backend.models import Channel
 
 
 @api_view(['GET'])
