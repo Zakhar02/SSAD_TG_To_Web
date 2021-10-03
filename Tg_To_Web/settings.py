@@ -40,7 +40,7 @@ INSTALLED_APPS = [
     'subscriber.apps.SubscriberConfig',
     'corsheaders',
     'rest_framework',
-    'sample'
+    'backend'
 ]
 
 REST_FRAMEWORK = {
