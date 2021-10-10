@@ -27,7 +27,7 @@ Whole system consists of three parts:
 
  * *frontend*. Implemented using React.js.
  * *web server*. Implemented using Django framework (Python).
- * *sync worker (bot)*. Works in background, communicates with Telegram API. Implemented using Python.<br />
+ * *sync worker*. Works in background, communicates with Telegram API. Implemented using Python.<br />
 ## Web application behavior<br />
 https://github.com/Zakhar02/SSAD_TG_To_Web/blob/master/mermaid-diagram-20210925232147.png
 ## Crawler(worker) behavior<br />
@@ -71,9 +71,13 @@ Running frontend:
 ```shell
 make run_frontend
 ```
-Running bot:
+Running sync worker requires to provide Telegram App Id and hash. Sync worker users Telegram accounts to access the API, thus it is necessary to provide account info, such as phone number and password (asked via prompt):
 ```shell
-make run_bot
+export TELEGRAM_APP_ID='your app id'
+export TELEGRAM_API_HASH='your api hash'
+export TELEGRAM_PHONE='+80000000000'
+export TELEGRAM_DATA_CRYPT_KEY='Any data, used as cryptographic seed'
+make run_sync
 ```
 Killing Docker container (in case of troubles/restarts).
 ```shell
