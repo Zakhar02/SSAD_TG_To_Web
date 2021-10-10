@@ -48,6 +48,7 @@ https://docs.google.com/document/d/1PvOoFsXBvledLdbXJhHEOobCbEGda6ax/edit?usp=sh
 A typical Django project that consists of "Tg_To_Web" folder that stores configuration settings, "backend" that is basically source code and a "frontend".
 
 ## Installation (Ubuntu)
+For now, the only way to use our App - you need to install Linux. Then:
 1. Install required packages using makefile
 ```shell
 install_all_deps
@@ -56,20 +57,6 @@ install_all_deps
 ```shell
 sudo snap install docker
 ```
-## Installation (Windows)
-
-1) install `make`;
-2) install node.js;
-3) install yarn
-4) install Docker
-
-The easiest way to install packets on Windows is to use choco packet manager:
-
-1) install choco: `Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))`
-2) `choco install make`
-3) `choco install -y nodejs`
-4) `choco install yarn`
-
 
 ## Running
 Run Docker container with PostgreSQL in it:
@@ -106,25 +93,5 @@ python3 manage.py migrate
 ## Rebuilding
 When rebuilt frontend part, you should rebuild static files:
 ```shell
-cd frontend && npm run build && python3 ../manage.py collectstatic
-```
-
-## API
-```
-GET /api/channels/
-    Returns 10 any channels
-    [{ id, title }, ...]
-
-GET /api/channels/?autocomplete-query=text
-    Returns 10 channels matching the query
-    [{ id, title }, ...]
-
-GET /api/channels/:channelId/messages?limit=N
-    Return last N messages for given channelId
-    [{ id, message }, ...]
-
-GET /api/channels/:channelId/messages?limit=N&before-id=messageId
-    Return N messages before given messageId
-    [{ id, message }, ...]
-
+rebuild
 ```

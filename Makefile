@@ -23,3 +23,6 @@ run_database:
 
 kill_database:
 	docker stop $(docker ps -qa) && docker rm $(docker ps -qa)
+
+rebuild:
+	cd frontend && npm run build && python3 ../manage.py collectstatic
