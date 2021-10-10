@@ -44,11 +44,13 @@ https://github.com/Zakhar02/SSAD_TG_To_Web/blob/master/mermaid-diagram-202109252
 ## More info in RUP: 
 https://docs.google.com/document/d/1PvOoFsXBvledLdbXJhHEOobCbEGda6ax/edit?usp=sharing&ouid=112203852966083452669&rtpof=true&sd=true
 
+## Project structure
+A typical Django project that consists of "Tg_To_Web" folder that stores configuration settings, "backend" that is basically source code and a "frontend".
+
 ## Installation (Ubuntu)
-1. Install python, pip and required packages
+1. Install required packages using makefile
 ```shell
-sudo apt install python3 python3-pip
-pip3 install django djangorestframework PyTelegramBotAPI psycopg2-binary
+install_all_deps
 ```
 2. Install Docker on your machine:
 ```shell
@@ -72,20 +74,23 @@ The easiest way to install packets on Windows is to use choco packet manager:
 ## Running
 Run Docker container with PostgreSQL in it:
 ```shell
-docker run -p 5432:5432 --name db_container --rm -d -e POSTGRES_PASSWORD=postgres -e POSTGRES_USER=postgres -e POSTGRES_DB=tg_to_web_db postgres
+run_database
 ```
 Running server: 
 ```shell
-python3 manage.py runserver 8000
+run_backend
+```
+Running frontend: 
+```shell
+run_frontend
 ```
 Running bot:
 ```shell
-python3 manage.py runbot
+run_bot
 ```
-Killing Docker container (in case of troubles/restarts). Getting a message
-*"docker rm" requires at least 1 argument* is OK.
+Killing Docker container (in case of troubles/restarts).
 ```shell
-docker stop $(docker ps -qa) && docker rm $(docker ps -qa)
+kill_database
 ```
 If getting an error *'listen tcp4 0.0.0.0:5432: bind: address already in use'*
 get the list of processes acquiring this port and kill them
