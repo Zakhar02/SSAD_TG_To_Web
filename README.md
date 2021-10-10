@@ -29,9 +29,9 @@ Whole system consists of three parts:
  * *web server*. Implemented using Django framework (Python).
  * *sync worker (bot)*. Works in background, communicates with Telegram API. Implemented using Python.<br />
 ## Web application behavior<br />
-![Web app diagram](https://github.com/Zakhar02/SSAD_TG_To_Web/blob/master/mermaid-diagram-20210925232147.png)<br />
+https://github.com/Zakhar02/SSAD_TG_To_Web/blob/master/mermaid-diagram-20210925232147.png
 ## Crawler(worker) behavior<br />
-![Crawler diagram](https://github.com/Zakhar02/SSAD_TG_To_Web/blob/master/mermaid-diagram-20210925232941.png)
+https://github.com/Zakhar02/SSAD_TG_To_Web/blob/master/mermaid-diagram-20210925232941.png
 
 ## Preview<br />
 ![front](https://github.com/Zakhar02/SSAD_TG_To_Web/blob/master/photo_2021-09-25_23-43-32.jpg)
