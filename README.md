@@ -41,6 +41,9 @@ https://github.com/Zakhar02/SSAD_TG_To_Web/blob/master/mermaid-diagram-202109252
 * Django - MVC framework, backend, has powerful patterns such as models and views.
 * Crawler - deamon that checks new messages and stores them in DB, implements observer pattern.
 
+## More info in RUP: 
+https://docs.google.com/document/d/1PvOoFsXBvledLdbXJhHEOobCbEGda6ax/edit?usp=sharing&ouid=112203852966083452669&rtpof=true&sd=true
+
 ## Installation (Ubuntu)
 1. Install python, pip and required packages
 ```shell
