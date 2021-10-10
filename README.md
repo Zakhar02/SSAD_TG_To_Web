@@ -51,7 +51,7 @@ A typical Django project that consists of "Tg_To_Web" folder that stores configu
 For now, the only way to use our App - you need to install Linux. Then:
 1. Install required packages using makefile
 ```shell
-install_all_deps
+make install_all_deps
 ```
 2. Install Docker on your machine:
 ```shell
@@ -61,23 +61,23 @@ sudo snap install docker
 ## Running
 Run Docker container with PostgreSQL in it:
 ```shell
-run_database
+make run_database
 ```
 Running server: 
 ```shell
-run_backend
+make run_backend
 ```
 Running frontend: 
 ```shell
-run_frontend
+make run_frontend
 ```
 Running bot:
 ```shell
-run_bot
+make run_bot
 ```
 Killing Docker container (in case of troubles/restarts).
 ```shell
-kill_database
+make kill_database
 ```
 If getting an error *'listen tcp4 0.0.0.0:5432: bind: address already in use'*
 get the list of processes acquiring this port and kill them
@@ -87,10 +87,10 @@ sudo kill {process id}
 ```
 If any change was applied to models.py files, run the following:
 ```shell
-migrate_db
+make migrate_db
 ```
 ## Rebuilding
 When rebuilt frontend part, you should rebuild static files:
 ```shell
-rebuild
+make rebuild
 ```
