@@ -87,8 +87,7 @@ sudo kill {process id}
 ```
 If any change was applied to models.py files, run the following:
 ```shell
-python3 manage.py makemigrations
-python3 manage.py migrate
+migrate_db
 ```
 ## Rebuilding
 When rebuilt frontend part, you should rebuild static files:
