@@ -26,6 +26,21 @@ MESSAGES = [
 @api_view(['GET'])
 @renderer_classes([JSONRenderer])
 def get_messages(request, **kwargs):
+    # algorithm
+    # 1) Check if channel with this id is already in the table
+    # 2) If it is already there, then just fetch messages from DB and return them
+    # 3) If it is absent, then insert it, fetch messages from Telegram, insert to DB and return them
+    try:
+        channel = Channel.objects.get(tg_handle=kwargs['channelId'])
+        return JsonResponse(MESSAGES, safe=False)
+    except Channel.DoesNotExist:
+        channel = Channel.create_from_tg_handle(kwargs['channelId'])
+        if not channel:
+            return JsonResponse([], safe=False)
+        channel.save()
+        return JsonResponse(MESSAGES, safe=False)
+        # messages = Message.create_initial_messages_for_channel(channel)
+
     # TODO: actually select messages from the table
     # use kwargs['channelId'] to select messages for it
     # print(kwargs['channelId'])

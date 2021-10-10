@@ -6,7 +6,7 @@ migrate_db:
 
 install_all_deps:
 	sudo apt install python3 python3-pip
-	pip3 install django djangorestframework PyTelegramBotAPI psycopg2-binary
+	pip3 install django djangorestframework python-telegram psycopg2-binary
 	cd frontend && yarn install
 
 run_bot: migrate_db
