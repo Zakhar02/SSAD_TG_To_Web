@@ -60,10 +60,11 @@ const TopNavbar = ({ initialChannelId }) => {
 
 
 const MessageItem = ({ text }) => {
+  const ps = text.split('\n').map((l, i) => <p key={i}>{l}</p>);
   return <Row>
-    <Card style={{ width: '18rem' }}>
+    <Card>
       <Card.Body>
-        <Card.Text>{text}</Card.Text>
+        <Card.Text>{ps}</Card.Text>
       </Card.Body>
     </Card>
   </Row>;

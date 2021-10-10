@@ -59,7 +59,7 @@ class TGAPI:
     # in order to get a chat_id, we send message to @username_to_id_bot
     # and read the response.
     # TODO: find a way to get chat_id without using external bots
-    def get_chat_id_for_handle(self, handle):
+    def get_chat_id_for_handle(self, handle, **kwargs):
         r = self.tg.send_message(USERNAME_TO_ID_CHAT_ID, f'@{handle}')
         r.wait()
         if r.error:
@@ -74,7 +74,7 @@ class TGAPI:
         # and get responses. This way many concurrent requests for chat_id wouldn't interfere
         # with each other. Requests for chat-id could possiblity handled in bulk, with
         # respect to quotas that Telegram may impose on such requests.
-        time.sleep(1)
+        time.sleep(kwargs['timeout'])
         # now we are trying to get the response from the bot
         # it must be in chat history
         r = self.tg.get_chat_history(USERNAME_TO_ID_CHAT_ID, limit=5)
@@ -83,3 +83,21 @@ class TGAPI:
             raise TGError(r.error_info)
 
         return get_chat_id_from_username_bot_messages(handle, r.update)
+    
+    def get_recent_messages(self, chat_id, **kwargs):
+        print(f'get_chat_history({chat_id}, {kwargs})')
+        r = self.tg.get_chat_history(chat_id,
+            limit=kwargs['limit'], from_message_id=kwargs['from_message_id']) 
+        r.wait()
+        if r.error:
+            raise TGError(r.error_info)
+        data = []
+        for m in r.update['messages']:
+            if not 'content' in m:
+                continue
+            if not 'text' in m['content']:
+                continue
+            if not 'text' in m['content']['text']:
+                continue
+            data.append({'text': m['content']['text']['text'], 'tg_id': m['id']})
+        return data

@@ -9,8 +9,8 @@ install_all_deps:
 	pip3 install django djangorestframework python-telegram psycopg2-binary
 	cd frontend && yarn install
 
-run_bot: migrate_db
-	$(PYTHON) manage.py runbot
+run_sync: migrate_db
+	$(PYTHON) manage.py run_sync
 
 run_backend: migrate_db
 	$(PYTHON) manage.py runserver 8000
